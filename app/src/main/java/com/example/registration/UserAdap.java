@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.registration.Models.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -24,10 +25,8 @@ import java.util.List;
 
 public class UserAdap extends RecyclerView.Adapter<UserAdap.ViewHolder> {
 
-    String username1;
-    String username2;
+    private String username2;
 
-    DatabaseReference reference;
     private Context mContext;
     private List<User> mUsers;
 
@@ -49,7 +48,7 @@ public class UserAdap extends RecyclerView.Adapter<UserAdap.ViewHolder> {
         final String username1 = user.getUsername();
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference().child("/users/" + firebaseUser.getUid());
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("/users/" + firebaseUser.getUid());
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -78,19 +77,19 @@ public class UserAdap extends RecyclerView.Adapter<UserAdap.ViewHolder> {
         return mUsers.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder{
 
-        public TextView username;
-        public ImageView profile_image;
+        TextView username;
+        ImageView profile_image;
 
-        public ViewHolder(View itemView){
+        ViewHolder(View itemView){
             super(itemView);
 
             username = itemView.findViewById(R.id.item_username);
             profile_image = itemView.findViewById(R.id.item_profile_image);
         }
     }
-    public String chatroomName(String username1, String username2){
+    private void chatroomName(String username1, String username2){
         final String chatroomName = "@" + username1 + "@" + username2;
         final String otherChatroomName = "@" + username2 + "@" + username1;
 
@@ -114,7 +113,6 @@ public class UserAdap extends RecyclerView.Adapter<UserAdap.ViewHolder> {
 
             }
         });
-        return finalname[0];
     }
     private void IntentWithData(String chatroomName){
         Intent intent = new Intent(mContext, Main_chat_activity.class);

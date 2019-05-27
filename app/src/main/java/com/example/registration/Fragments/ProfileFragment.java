@@ -1,4 +1,4 @@
-package com.example.registration;
+package com.example.registration.Fragments;
 
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
@@ -11,10 +11,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.MimeTypeMap;
-import android.widget.ImageView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.registration.EmailChange;
+import com.example.registration.Models.User;
+import com.example.registration.PasswordChange;
+import com.example.registration.R;
+import com.example.registration.SlideMenu;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -41,6 +47,8 @@ public class ProfileFragment extends Fragment {
 
     CircleImageView image_profile;
     TextView username;
+    Button change_password;
+    Button change_email;
 
     DatabaseReference reference;
     FirebaseUser fuser;
@@ -51,12 +59,14 @@ public class ProfileFragment extends Fragment {
     private StorageTask uploadTask;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
         image_profile = view.findViewById(R.id.profile_fragment_image);
         username = view.findViewById(R.id.profile_username);
+        change_password = view.findViewById(R.id.change_password_profile);
+        change_email = view.findViewById(R.id.change_email_profile);
 
         storageReference = FirebaseStorage.getInstance().getReference("/image/");
 
@@ -82,6 +92,22 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 openImage();
+            }
+        });
+
+        change_password.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), PasswordChange.class);
+                startActivity(intent);
+            }
+        });
+
+        change_email.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), EmailChange.class);
+                startActivity(intent);
             }
         });
 

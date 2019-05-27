@@ -11,50 +11,54 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-
+        <activity android:name=".EmailChange"></activity>
+        <activity android:name=".PasswordChange" />
+        <activity
+            android:name=".ForgotPassword"
+            android:configChanges="orientation"
+            android:parentActivityName=".LoginIn"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".CreateChatroom"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".EnterPrivateMessage"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".EnterChatroomMessage"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SlideMenu"
             android:configChanges="orientation"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Register"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
-        <activity
-            android:name=".WelcomeScreen"
-            android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="orientation"
             android:screenOrientation="portrait"
-          >
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".WelcomeScreen"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".LoginIn"
-            android:theme="@style/AppTheme.NoActionBar"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Main_chat_activity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"
-            />
-
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

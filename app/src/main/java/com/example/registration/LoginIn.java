@@ -1,5 +1,6 @@
 package com.example.registration;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -26,6 +27,8 @@ public class LoginIn extends AppCompatActivity implements View.OnClickListener{
     String emailFound;
     String passwordFound;
 
+    ProgressDialog dialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +36,9 @@ public class LoginIn extends AppCompatActivity implements View.OnClickListener{
 
         findViewById(R.id.login_button_login).setOnClickListener(this);
         findViewById(R.id.login_registration).setOnClickListener(this);
+        findViewById(R.id.forgot_you_password).setOnClickListener(this);
+
+        dialog = new ProgressDialog(this);
     }
 
     @Override
@@ -54,11 +60,12 @@ public class LoginIn extends AppCompatActivity implements View.OnClickListener{
         emailFound = email.getText().toString();
         passwordFound = password.getText().toString();
 
-        if (emailFound.isEmpty() || passwordFound.isEmpty()) {
-            Toast.makeText(LoginIn.this , "Pleas enter text in email/pw", Toast.LENGTH_SHORT).show();
-            //TODO: move toast string to strings.xml
+        if (passwordFound.length() < 6 || emailFound.isEmpty() || passwordFound.isEmpty()){
+            formatCheck();
             return;
         }
+        dialog.setMessage("Logining...");
+        dialog.show();
 
         mAuth = FirebaseAuth.getInstance();
         mAuth.signInWithEmailAndPassword(emailFound, passwordFound)
@@ -66,14 +73,14 @@ public class LoginIn extends AppCompatActivity implements View.OnClickListener{
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
                             Log.d("signInWithEmailSuccess", "signInWithEmail:success");
+                            dialog.dismiss();
                             Intent intent = new Intent(LoginIn.this, SlideMenu.class);
                             startActivity(intent);
                             finish();
                             //TODO: showChat() for chowing main chat layout
                         } else {
-                            // If sign in fails, display a message to the user.
+                            dialog.dismiss();
                             Log.w("signInWithEmailFail", "signInWithEmail:failure", task.getException());
                             Toast.makeText(LoginIn.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
@@ -84,12 +91,31 @@ public class LoginIn extends AppCompatActivity implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        int i = v.getId();
-        if (i == R.id.login_registration) {
-            Intent intent = new Intent(LoginIn.this, Register.class);
-            startActivity(intent);
-        } else if (i == R.id.login_button_login) {
-            signIn();
+        int id = v.getId();
+        switch (id){
+            case R.id.login_registration:
+                Intent intent = new Intent(LoginIn.this, Register.class);
+                startActivity(intent);
+                break;
+            case R.id.login_button_login:
+                signIn();
+                break;
+            case R.id.forgot_you_password:
+                Intent intent1 = new Intent(LoginIn.this, ForgotPassword.class);
+                startActivity(intent1);
+                break;
+                default:
         }
+    }
+
+    public void formatCheck(){
+        if (passwordFound.length() < 6)
+        password.setError("6 characters");
+
+        if (emailFound.isEmpty())
+            email.setError("Empty");
+
+        if (passwordFound.isEmpty())
+            password.setError("Empty");
     }
 }

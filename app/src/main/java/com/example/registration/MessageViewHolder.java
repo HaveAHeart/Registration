@@ -4,6 +4,8 @@ import android.content.Context;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.registration.Models.Message;
+
 public class MessageViewHolder extends android.support.v7.widget.RecyclerView.ViewHolder{
     View view;
     Context context;

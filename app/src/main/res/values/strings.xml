@@ -20,4 +20,11 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="kvaksha_bandmmark">kvaksha_bandmmark</string>
+    <string name="forgot_you_password">Forgot you password?</string>
+    <string name="reset">Reset</string>
+    <string name="your_email">Your email</string>
+    <string name="change_nphoto">Change  Photo</string>
+    <string name="change_password">Change password</string>
+    <string name="change_email">Change Email</string>
 </resources>

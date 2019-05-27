@@ -1,25 +1,27 @@
-package com.example.registration;
+package com.example.registration.Models;
+
+import com.example.registration.Models.Message;
 
 public class Chatroom {
 
     String chatroomName;
     String pw;
     Message message;
-    String uid1;
-    String uid2;
+
+    String chatroomImageUrl;
 
     Chatroom(){}
-    Chatroom(String chatroomName){
+    public Chatroom(String chatroomName){
         this.chatroomName = chatroomName;
-    }
-    Chatroom(String chatroomName, String uid1, String uid2){
-        this.chatroomName = chatroomName;
-        this.uid1 = uid1;
-        this.uid2 = uid2;
     }
     Chatroom(String chatroomName, String pw){
         this.chatroomName = chatroomName;
         this.pw = pw;
+    }
+    public Chatroom(String chatroomName, String pw, String chatroomImageUrl){
+        this.chatroomName = chatroomName;
+        this.pw = pw;
+        this.chatroomImageUrl = chatroomImageUrl;
     }
     Chatroom(String chatroomName, Message message){
         this.chatroomName = chatroomName;
@@ -46,23 +48,11 @@ public class Chatroom {
         return message;
     }
 
-    public String getUid2() {
-        return uid2;
+    public String getChatroomImageUrl() {
+        return chatroomImageUrl;
     }
 
-    public void setUid2(String uid2) {
-        this.uid2 = uid2;
-    }
-
-    public String getUid1() {
-        return uid1;
-    }
-
-    public void setUid1(String uid1) {
-        this.uid1 = uid1;
-    }
-
-    public void setMessage(Message message) {
-        this.message = message;
+    public void setChatroomImageUrl(String chatroomImageUrl) {
+        this.chatroomImageUrl = chatroomImageUrl;
     }
 }

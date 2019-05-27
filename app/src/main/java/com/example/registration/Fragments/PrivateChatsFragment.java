@@ -1,8 +1,6 @@
-package com.example.registration;
+package com.example.registration.Fragments;
 
-import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -15,6 +13,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.registration.ChatroomAdap;
+import com.example.registration.CreateChatroom;
+import com.example.registration.EnterChatroomMessage;
+import com.example.registration.EnterPrivateMessage;
+import com.example.registration.Models.Chatroom;
+import com.example.registration.R;
+import com.example.registration.Models.User;
+import com.example.registration.UserAdap;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -26,7 +32,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatsFragment extends Fragment {
+public class PrivateChatsFragment extends Fragment {
 
     private RecyclerView recyclerView;
 
@@ -40,7 +46,7 @@ public class ChatsFragment extends Fragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.chatsmenu, menu);
+        inflater.inflate(R.menu.privatechatsmenu, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
 
@@ -76,15 +82,15 @@ public class ChatsFragment extends Fragment {
                                     usersList.add(d.getValue().toString());
                                 }
                             }
+                            if (usersList.isEmpty()) {
+                                usersList.add(fUser.getUid());
+                            }
                         }
-                        if (usersList.isEmpty()) {
-                            usersList.add(fUser.getUid());
-                        }
-
+                        readChats();
                     }
                 }
-                readChats();
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -138,21 +144,9 @@ public class ChatsFragment extends Fragment {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        Fragment fragment;
-        switch (id){
-            case R.id.create_chatroom:
-                Intent intentCC = new Intent(getActivity(), CreateChatroom.class);
-                startActivity(intentCC);
-                break;
-            case R.id.chatroom_messages:
-                Intent intentCM = new Intent(getActivity(), EnterChatroomMessage.class);
-                startActivity(intentCM);
-                break;
-            case R.id.private_messages:
+        if(id == R.id.private_messages){
                 Intent intentPM = new Intent(getActivity(), EnterPrivateMessage.class);
                 startActivity(intentPM);
-                break;
-                default:
         }
         return true;
     }

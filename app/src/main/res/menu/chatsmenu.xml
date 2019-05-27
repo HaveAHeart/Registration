@@ -8,8 +8,4 @@
     <item android:id="@+id/chatroom_messages"
         android:title="@string/chatroom_messages"
         android:icon="@drawable/ic_message" />
-
-    <item android:id="@+id/private_messages"
-        android:title="@string/private_messages"
-        android:icon="@drawable/ic_message" />
 </menu>

@@ -3,7 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    tools:context=".Fragments.ProfileFragment">
+
+    <Button
+        android:id="@+id/change_password_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="256dp"
+        android:background="@drawable/rounded"
+        android:text="@string/change_password"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        />
+
+    <Button
+        android:id="@+id/change_email_profile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="332dp"
+        android:background="@drawable/rounded"
+        android:text="@string/change_email"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        />
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -12,30 +32,49 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:text="@string/profile"
-                android:textColor="@android:color/black"/>
+
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_fragment_image"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:id="@+id/profile_fragment_image"
+                android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp"
-                android:src="@mipmap/ic_launcher"/>
+                android:layout_marginTop="8dp"
+                android:src="@mipmap/ic_launcher" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/username"
                 android:layout_below="@+id/profile_fragment_image"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="11dp"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:id="@+id/profile_username"
-                android:layout_marginBottom="20dp"/>
+                android:layout_marginBottom="0dp"/>
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="91dp"
+                android:layout_height="60dp"
+                android:layout_alignStart="@+id/profile_fragment_image"
+                android:layout_alignLeft="@+id/profile_fragment_image"
+                android:layout_alignTop="@+id/profile_fragment_image"
+                android:layout_alignEnd="@+id/profile_fragment_image"
+                android:layout_alignRight="@+id/profile_fragment_image"
+                android:layout_alignBottom="@+id/profile_fragment_image"
+                android:layout_marginStart="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="4dp"
+                android:layout_marginRight="4dp"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:text="@string/change_nphoto"
+                android:textColor="@color/colorAccent"
+                android:textSize="24sp"
+                android:textStyle="bold|italic" />
         </RelativeLayout>
     </android.support.v7.widget.CardView>
 </FrameLayout>

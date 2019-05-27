@@ -5,6 +5,10 @@
         android:title="@string/profile"
         android:icon="@drawable/ic_logout"/>
 
+    <item android:id="@+id/p_chatrooms"
+        android:title="Private Chats"
+        android:icon="@drawable/ic_view_list"/>
+
     <item android:id="@+id/chatrooms"
         android:title="@string/chatrooms"
         android:icon="@drawable/ic_view_list"/>

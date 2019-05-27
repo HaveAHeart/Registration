@@ -12,7 +12,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="32dp"
         android:layout_marginLeft="32dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:background="@drawable/rounded"
@@ -49,4 +49,27 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/create_chatroom_name"
         app:layout_constraintTop_toBottomOf="@+id/create_chatroom_name" />
+
+    <Button
+        android:id="@+id/selectphoto_button_cc"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/registration_select_photo_rounded"
+        android:text="@string/select_photo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/selectphoto_imagevies_circle_cc"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        app:layout_constraintBottom_toBottomOf="@+id/selectphoto_button_cc"
+        app:layout_constraintEnd_toEndOf="@+id/selectphoto_button_cc"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/selectphoto_button_cc"
+        app:layout_constraintTop_toTopOf="@+id/selectphoto_button_cc"
+        app:layout_constraintVertical_bias="0.0" />
 </android.support.constraint.ConstraintLayout>
